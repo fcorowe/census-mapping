@@ -1,2 +1,6 @@
-data/inputs/*.gpkg
+.git/
+.Rproj.user/
+.Rhistory
+.DS_Store
 explore_liv_students-gh-pages/
+data/inputs/*.gpkg

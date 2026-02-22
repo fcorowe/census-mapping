@@ -45,27 +45,26 @@ density <- read_csv(ts006_path, show_col_types = FALSE) |>
     population_density = `Population Density: Persons per square kilometre; measures: Value`
   )
 
-oac <- st_read(oac_path, layer = "oac21", quiet = TRUE) |>
-  transmute(
-    oa_code = GeographyC,
-    lad_code = LAD25Code,
-    lad_name = LAD25Name,
-    supergroup = Supergroup,
-    group_name = Group,
-    subgroup = Subgroup,
-    geom = geom
-  ) |>
-  filter(grepl("^[EW]", oa_code))
-
-map_data <- oac |>
-  inner_join(students, by = "oa_code") |>
+student_density <- students |>
   inner_join(density, by = "oa_code")
 
-lad_choices <- map_data |>
-  st_drop_geometry() |>
-  distinct(lad_name) |>
-  arrange(lad_name) |>
-  pull(lad_name)
+lad_choices <- st_read(
+  oac_path,
+  query = "SELECT DISTINCT LAD25Name AS lad_name FROM oac21 WHERE GeographyC LIKE 'E%' OR GeographyC LIKE 'W%' ORDER BY LAD25Name",
+  quiet = TRUE
+) |>
+  dplyr::pull(lad_name)
+
+read_lad_oac <- function(lad) {
+  lad_escaped <- gsub("'", "''", lad)
+  q <- sprintf(
+    "SELECT GeographyC AS oa_code, LAD25Code AS lad_code, LAD25Name AS lad_name, Supergroup AS supergroup, \"Group\" AS group_name, Subgroup AS subgroup, geom
+     FROM oac21
+     WHERE LAD25Name = '%s' AND (GeographyC LIKE 'E%%' OR GeographyC LIKE 'W%%')",
+    lad_escaped
+  )
+  st_read(oac_path, query = q, quiet = TRUE)
+}
 
 default_lad <- if ("Liverpool" %in% lad_choices) "Liverpool" else lad_choices[1]
 
@@ -192,17 +191,19 @@ server <- function(input, output, session) {
   })
 
   students_data <- reactive({
-    lad <- selected_lad()
     min_density <- selected_min_density()
-    map_data |>
-      filter(lad_name == lad, population_density >= min_density) |>
-      st_transform(4326)
+    oac_data() |>
+      filter(population_density >= min_density)
   })
 
   oac_data <- reactive({
     lad <- selected_lad()
-    map_data |>
-      filter(lad_name == lad) |>
+    geo <- read_lad_oac(lad)
+    attrs <- student_density |>
+      filter(oa_code %in% geo$oa_code)
+
+    geo |>
+      inner_join(attrs, by = "oa_code") |>
       st_transform(4326)
   })
 
