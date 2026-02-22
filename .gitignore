@@ -13,3 +13,6 @@ renv/staging/
 # Shiny runtime/cache artifacts
 rsconnect/
 shinylogs/
+
+# Local reference materials (do not version)
+explore_liv_students-gh-pages/
