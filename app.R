@@ -12,6 +12,7 @@ ts068_path <- "data/inputs/census2021-ts068/census2021-ts068-oa.csv"
 ts006_path <- "data/inputs/census2021-ts006/census2021-ts006-oa.csv"
 oac_path <- "data/inputs/oac21.gpkg"
 slides_path <- "explore_liv_students-gh-pages/slides"
+slides_src <- "slides_fallback.html"
 
 source("scripts/data_bootstrap.R")
 ensure_required_data(
@@ -21,7 +22,10 @@ ensure_required_data(
   )
 )
 
-addResourcePath("slides", slides_path)
+if (dir.exists(slides_path)) {
+  addResourcePath("slides", slides_path)
+  slides_src <- "slides/index.html"
+}
 
 students <- read_csv(ts068_path, show_col_types = FALSE) |>
   transmute(
@@ -137,7 +141,7 @@ ui <- fluidPage(
     tags$header(
       tags$iframe(
         class = "slides-frame",
-        src = "slides/index.html",
+        src = slides_src,
         frameborder = "0",
         width = "100%",
         height = "100%"
