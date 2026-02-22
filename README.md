@@ -34,6 +34,14 @@ export CENSUS_MAPPING_OAC21_GPKG_URL="https://<your-hosted-file>/oac21.gpkg"
 Rscript scripts/get_data.R
 ```
 
+Dropbox note:
+- Use a shared link for `oac21.gpkg`; the bootstrap script auto-converts Dropbox preview links (`dl=0`) to direct download (`dl=1`).
+- Example:
+```bash
+export CENSUS_MAPPING_OAC21_GPKG_URL="https://www.dropbox.com/scl/fi/<id>/oac21.gpkg?dl=0"
+Rscript scripts/get_data.R
+```
+
 ## GitHub Pages setup
 
 1. Deploy your Shiny app and copy its public URL.
