@@ -1,0 +1,175 @@
+"date","geography","geography code","Population Density: Persons per square kilometre; measures: Value"
+"2021","Darlington","E06000005",545.9
+"2021","County Durham","E06000047",234.5
+"2021","Hartlepool","E06000001",985.5
+"2021","Middlesbrough","E06000002",2671.2
+"2021","Northumberland","E06000057",63.9
+"2021","Redcar and Cleveland","E06000003",557.1
+"2021","Stockton-on-Tees","E06000004",959.3
+"2021","Gateshead","E08000037",1378.0
+"2021","Newcastle upon Tyne","E08000021",2646.1
+"2021","North Tyneside","E08000022",2538.6
+"2021","South Tyneside","E08000023",2294.2
+"2021","Sunderland","E08000024",1994.6
+"2021","Blackburn with Darwen","E06000008",1129.4
+"2021","Blackpool","E06000009",4041.1
+"2021","Cheshire East","E06000049",341.9
+"2021","Cheshire West and Chester","E06000050",388.2
+"2021","Halton","E06000006",1624.3
+"2021","Warrington","E06000007",1168.0
+"2021","Cumbria","E10000006",73.9
+"2021","Bolton","E08000001",2117.0
+"2021","Bury","E08000002",1948.6
+"2021","Manchester","E08000003",4772.7
+"2021","Oldham","E08000004",1700.5
+"2021","Rochdale","E08000005",1415.6
+"2021","Salford","E08000006",2777.2
+"2021","Stockport","E08000007",2338.3
+"2021","Tameside","E08000008",2239.7
+"2021","Trafford","E08000009",2216.7
+"2021","Wigan","E08000010",1750.0
+"2021","Lancashire","E10000017",426.9
+"2021","Knowsley","E08000011",1787.0
+"2021","Liverpool","E08000012",4346.1
+"2021","Sefton","E08000014",1783.4
+"2021","St. Helens","E08000013",1343.6
+"2021","Wirral","E08000015",1989.7
+"2021","East Riding of Yorkshire","E06000011",142.4
+"2021","Kingston upon Hull, City of","E06000010",3730.1
+"2021","North East Lincolnshire","E06000012",815.0
+"2021","North Lincolnshire","E06000013",200.4
+"2021","York","E06000014",745.8
+"2021","North Yorkshire","E10000023",76.6
+"2021","Barnsley","E08000016",743.3
+"2021","Doncaster","E08000017",542.4
+"2021","Rotherham","E08000018",927.7
+"2021","Sheffield","E08000019",1512.5
+"2021","Bradford","E08000032",1491.2
+"2021","Calderdale","E08000033",567.8
+"2021","Kirklees","E08000034",1060.3
+"2021","Leeds","E08000035",1471.7
+"2021","Wakefield","E08000036",1043.6
+"2021","Derby","E06000015",3349.5
+"2021","Leicester","E06000016",5027.2
+"2021","Nottingham","E06000018",4337.6
+"2021","Rutland","E06000017",107.5
+"2021","Derbyshire","E10000007",312.0
+"2021","Leicestershire","E10000018",342.0
+"2021","Lincolnshire","E10000019",129.4
+"2021","Nottinghamshire","E10000024",395.6
+"2021","North Northamptonshire","E06000061",364.4
+"2021","West Northamptonshire","E06000062",309.1
+"2021","Herefordshire, County of","E06000019",85.8
+"2021","Shropshire","E06000051",101.2
+"2021","Stoke-on-Trent","E06000021",2764.8
+"2021","Telford and Wrekin","E06000020",639.1
+"2021","Staffordshire","E10000028",334.4
+"2021","Warwickshire","E10000031",302.1
+"2021","Birmingham","E08000025",4275.4
+"2021","Coventry","E08000026",3500.7
+"2021","Dudley","E08000027",3302.4
+"2021","Sandwell","E08000028",3994.9
+"2021","Solihull","E08000029",1212.9
+"2021","Walsall","E08000030",2733.1
+"2021","Wolverhampton","E08000031",3797.9
+"2021","Worcestershire","E10000034",346.8
+"2021","Bedford","E06000055",388.8
+"2021","Central Bedfordshire","E06000056",411.2
+"2021","Luton","E06000032",5196.0
+"2021","Peterborough","E06000031",628.1
+"2021","Southend-on-Sea","E06000033",4335.6
+"2021","Thurrock","E06000034",1074.2
+"2021","Cambridgeshire","E10000003",222.8
+"2021","Essex","E10000012",434.7
+"2021","Hertfordshire","E10000015",729.6
+"2021","Norfolk","E10000020",170.2
+"2021","Suffolk","E10000029",200.2
+"2021","Camden","E09000007",9640.9
+"2021","City of London","E09000001",2975.0
+"2021","Hackney","E09000012",13593.3
+"2021","Hammersmith and Fulham","E09000013",11161.1
+"2021","Haringey","E09000014",8930.2
+"2021","Islington","E09000019",14574.9
+"2021","Kensington and Chelsea","E09000020",11816.5
+"2021","Lambeth","E09000022",11839.1
+"2021","Lewisham","E09000023",8551.5
+"2021","Newham","E09000025",9690.1
+"2021","Southwark","E09000028",10659.0
+"2021","Tower Hamlets","E09000030",15702.9
+"2021","Wandsworth","E09000032",9560.0
+"2021","Westminster","E09000033",9514.2
+"2021","Barking and Dagenham","E09000002",6065.8
+"2021","Barnet","E09000003",4488.7
+"2021","Bexley","E09000004",4070.7
+"2021","Brent","E09000005",7859.6
+"2021","Bromley","E09000006",2197.7
+"2021","Croydon","E09000008",4516.0
+"2021","Ealing","E09000009",6611.6
+"2021","Enfield","E09000010",4082.5
+"2021","Greenwich","E09000011",6108.6
+"2021","Harrow","E09000015",5175.4
+"2021","Havering","E09000016",2332.3
+"2021","Hillingdon","E09000017",2644.0
+"2021","Hounslow","E09000018",5148.0
+"2021","Kingston upon Thames","E09000021",4512.1
+"2021","Merton","E09000024",5721.6
+"2021","Redbridge","E09000026",5501.9
+"2021","Richmond upon Thames","E09000027",3401.9
+"2021","Sutton","E09000029",4781.0
+"2021","Waltham Forest","E09000031",7173.3
+"2021","Bracknell Forest","E06000036",1139.2
+"2021","Brighton and Hove","E06000043",3345.3
+"2021","Isle of Wight","E06000046",370.0
+"2021","Medway","E06000035",1444.2
+"2021","Milton Keynes","E06000042",930.1
+"2021","Portsmouth","E06000044",5149.8
+"2021","Reading","E06000038",4312.6
+"2021","Slough","E06000039",4871.5
+"2021","Southampton","E06000045",4990.5
+"2021","West Berkshire","E06000037",229.3
+"2021","Windsor and Maidenhead","E06000040",781.1
+"2021","Wokingham","E06000041",991.7
+"2021","Buckinghamshire","E06000060",353.4
+"2021","East Sussex","E10000011",319.5
+"2021","Hampshire","E10000014",380.8
+"2021","Kent","E10000016",444.7
+"2021","Oxfordshire","E10000025",278.4
+"2021","Surrey","E10000030",723.7
+"2021","West Sussex","E10000032",443.3
+"2021","Bath and North East Somerset","E06000022",559.2
+"2021","Bristol, City of","E06000023",4308.1
+"2021","Cornwall","E06000052",160.9
+"2021","Isles of Scilly","E06000053",125.9
+"2021","North Somerset","E06000024",579.9
+"2021","Plymouth","E06000026",3314.8
+"2021","Bournemouth, Christchurch and Poole","E06000058",2469.2
+"2021","South Gloucestershire","E06000025",584.3
+"2021","Swindon","E06000030",1014.4
+"2021","Torbay","E06000027",2215.6
+"2021","Wiltshire","E06000054",156.8
+"2021","Devon","E10000008",123.7
+"2021","Dorset","E06000059",152.4
+"2021","Gloucestershire","E10000013",243.2
+"2021","Somerset","E10000027",165.7
+"2021","Isle of Anglesey","W06000001",96.7
+"2021","Gwynedd","W06000002",46.3
+"2021","Conwy","W06000003",101.9
+"2021","Denbighshire","W06000004",114.5
+"2021","Flintshire","W06000005",352.3
+"2021","Wrexham","W06000006",268.2
+"2021","Powys","W06000023",25.7
+"2021","Ceredigion","W06000008",40.0
+"2021","Pembrokeshire","W06000009",76.2
+"2021","Carmarthenshire","W06000010",79.3
+"2021","Swansea","W06000011",631.5
+"2021","Neath Port Talbot","W06000012",322.5
+"2021","Bridgend","W06000013",580.1
+"2021","Vale of Glamorgan","W06000014",398.4
+"2021","Cardiff","W06000015",2571.3
+"2021","Rhondda Cynon Taff","W06000016",560.3
+"2021","Merthyr Tydfil","W06000024",528.2
+"2021","Caerphilly","W06000018",634.2
+"2021","Blaenau Gwent","W06000019",615.1
+"2021","Torfaen","W06000020",734.4
+"2021","Monmouthshire","W06000021",109.5
+"2021","Newport","W06000022",838.1
