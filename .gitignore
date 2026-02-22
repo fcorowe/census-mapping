@@ -16,3 +16,6 @@ shinylogs/
 
 # Local reference materials (do not version)
 explore_liv_students-gh-pages/
+
+# Large local data binaries
+/data/inputs/*.gpkg

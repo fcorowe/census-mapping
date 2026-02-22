@@ -13,6 +13,14 @@ ts006_path <- "data/inputs/census2021-ts006/census2021-ts006-oa.csv"
 oac_path <- "data/inputs/oac21.gpkg"
 slides_path <- "explore_liv_students-gh-pages/slides"
 
+source("scripts/data_bootstrap.R")
+ensure_required_data(
+  required_files = c(ts068_path, ts006_path, oac_path),
+  env_url_map = c(
+    "data/inputs/oac21.gpkg" = "CENSUS_MAPPING_OAC21_GPKG_URL"
+  )
+)
+
 addResourcePath("slides", slides_path)
 
 students <- read_csv(ts068_path, show_col_types = FALSE) |>
