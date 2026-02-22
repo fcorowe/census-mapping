@@ -13,6 +13,7 @@ ts006_path <- "data/inputs/census2021-ts006/census2021-ts006-oa.csv"
 oac_path <- "data/inputs/oac21.gpkg"
 slides_path <- "explore_liv_students-gh-pages/slides"
 slides_src <- "slides_fallback.html"
+show_slides <- FALSE
 
 source("scripts/data_bootstrap.R")
 ensure_required_data(
@@ -28,6 +29,7 @@ ensure_required_data(
 if (dir.exists(slides_path)) {
   addResourcePath("slides", slides_path)
   slides_src <- "slides/index.html"
+  show_slides <- TRUE
 }
 
 students <- read_csv(ts068_path, show_col_types = FALSE) |>
@@ -138,29 +140,40 @@ ui <- fluidPage(
        });"
     ))
   ),
-  div(
-    class = "wrapper",
-    tags$header(
-      tags$iframe(
-        class = "slides-frame",
-        src = slides_src,
-        frameborder = "0",
-        width = "100%",
-        height = "100%"
-      )
-    ),
-    tags$section(
-      leafletOutput("map", width = "100%", height = "100%"),
-      uiOutput("map_controls_ui"),
-      tags$footer(
-        tags$p(
-          HTML(
-            "Licensed under <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons 4.0</a> [<a href='https://github.com/darribas/explore_liv_students'>Original format source</a>]"
+  if (show_slides) {
+    div(
+      class = "wrapper",
+      tags$header(
+        tags$iframe(
+          class = "slides-frame",
+          src = slides_src,
+          frameborder = "0",
+          width = "100%",
+          height = "100%"
+        )
+      ),
+      tags$section(
+        leafletOutput("map", width = "100%", height = "100%"),
+        uiOutput("map_controls_ui"),
+        tags$footer(
+          tags$p(
+            HTML(
+              "Licensed under <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>Creative Commons 4.0</a> [<a href='https://github.com/darribas/explore_liv_students'>Original format source</a>]"
+            )
           )
         )
       )
     )
-  )
+  } else {
+    div(
+      style = "height:98vh; width:100%; position:relative;",
+      tags$section(
+        style = "width:100%; float:none; height:100%; position:relative;",
+        leafletOutput("map", width = "100%", height = "100%"),
+        uiOutput("map_controls_ui")
+      )
+    )
+  }
 )
 
 server <- function(input, output, session) {
