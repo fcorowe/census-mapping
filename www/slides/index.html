@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Census Mapping Slides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      html, body { margin: 0; height: 100%; background: #0f0f0f; color: #efefef; font-family: "Atkinson Hyperlegible Next", Arial, sans-serif; }
+      .wrap { display: grid; grid-template-rows: 1fr auto; height: 100%; }
+      .slide { padding: 20px 18px; overflow: auto; }
+      h1 { margin: 0 0 10px; font-size: 1.35rem; line-height: 1.15; }
+      p, li { font-size: 0.95rem; line-height: 1.45; }
+      ul { padding-left: 1.2rem; }
+      .deckbar { border-top: 1px solid #2f2f2f; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; background: #151515; }
+      .controls { display: flex; gap: 8px; }
+      button { border: 1px solid #3b3b3b; background: #232323; color: #f2f2f2; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
+      button:disabled { opacity: 0.45; cursor: not-allowed; }
+      .idx { font-size: 0.85rem; color: #cfcfcf; }
+      .hint { font-size: 0.8rem; color: #aaaaaa; }
+      code { background: #232323; padding: 2px 4px; border-radius: 3px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="slide" id="slide"></section>
+      <footer class="deckbar">
+        <div>
+          <div class="idx" id="idx"></div>
+          <div class="hint">Use arrows, space, or buttons</div>
+        </div>
+        <div class="controls">
+          <button id="prev">Prev</button>
+          <button id="next">Next</button>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const slides = [
+        {
+          title: "Where students live...",
+          body: `
+            <p>Welcome to the mapping practical. Use the controls to move through prompts and explore Liverpool patterns in the map.</p>
+          `
+        },
+        {
+          title: "Welcome",
+          body: `
+            <p>This activity explores Census 2021 data at Output Area level.</p>
+            <ul>
+              <li>Student share</li>
+              <li>Number of students</li>
+              <li>Population density</li>
+            </ul>
+          `
+        },
+        {
+          title: "Population density",
+          body: `
+            <p>Start by inspecting population density patterns.</p>
+            <ul>
+              <li>Which areas are most dense?</li>
+              <li>How does this compare with student-heavy areas?</li>
+            </ul>
+          `
+        },
+        {
+          title: "OAC",
+          body: `
+            <p>Now switch perspective to the Output Area Classification (OAC).</p>
+            <p>The map switches to OAC categories in this section.</p>
+          `
+        },
+        {
+          title: "Explore OAC classes",
+          body: `
+            <p>Inspect supergroups, groups, and subgroups.</p>
+            <ul>
+              <li>Where are distinct neighborhood types concentrated?</li>
+              <li>What relationships appear with student concentration?</li>
+            </ul>
+          `
+        },
+        {
+          title: "OAC and students",
+          body: `
+            <p>Compare OAC categories with student geographies.</p>
+            <p>Are student clusters associated with specific area types?</p>
+          `
+        },
+        {
+          title: "OAC reflection",
+          body: `
+            <p>Summarize the dominant OAC patterns in Liverpool and how they relate to density and student distribution.</p>
+          `
+        },
+        {
+          title: "Student population",
+          body: `
+            <p>Return to student-focused layers and test filters.</p>
+            <ul>
+              <li>Which OAs have highest student share?</li>
+              <li>Which OAs have highest student counts?</li>
+            </ul>
+          `
+        },
+        {
+          title: "Discussion",
+          body: `
+            <p>Use the map controls to compare metrics and formulate your interpretation.</p>
+          `
+        },
+        {
+          title: "Finish",
+          body: `
+            <p>Well done. You have completed the practical.</p>
+          `
+        }
+      ];
+
+      let i = 0;
+      const slideEl = document.getElementById('slide');
+      const idxEl = document.getElementById('idx');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+
+      function notifyParent() {
+        const payload = { type: 'reveal-slide', indexh: i };
+        try {
+          let w = window;
+          while (w && w.parent !== w) {
+            if (w.Shiny && typeof w.Shiny.setInputValue === 'function') {
+              w.Shiny.setInputValue('slide_indexh', i, { priority: 'event' });
+              break;
+            }
+            w = w.parent;
+          }
+        } catch (e) {}
+        window.parent.postMessage(payload, '*');
+      }
+
+      function render() {
+        const s = slides[i];
+        slideEl.innerHTML = `<h1>${s.title}</h1>${s.body}`;
+        idxEl.textContent = `Slide ${i + 1} / ${slides.length}`;
+        prev.disabled = i === 0;
+        next.disabled = i === slides.length - 1;
+        notifyParent();
+      }
+
+      function step(dir) {
+        const n = i + dir;
+        if (n < 0 || n >= slides.length) return;
+        i = n;
+        render();
+      }
+
+      prev.addEventListener('click', () => step(-1));
+      next.addEventListener('click', () => step(1));
+      window.addEventListener('keydown', (e) => {
+        if (["ArrowRight", "ArrowDown", " ", "PageDown"].includes(e.key)) {
+          e.preventDefault();
+          step(1);
+        }
+        if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
+          e.preventDefault();
+          step(-1);
+        }
+      });
+
+      render();
+    </script>
+  </body>
+</html>
