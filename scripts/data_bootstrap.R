@@ -12,7 +12,7 @@ normalize_download_url <- function(src) {
   src
 }
 
-ensure_required_data <- function(required_files, env_url_map = character()) {
+ensure_required_data <- function(required_files, env_url_map = character(), url_map = character()) {
   missing_files <- required_files[!file.exists(required_files)]
   if (!length(missing_files)) {
     return(invisible(TRUE))
@@ -25,6 +25,9 @@ ensure_required_data <- function(required_files, env_url_map = character()) {
     }
 
     src <- Sys.getenv(env_name, unset = "")
+    if (!nzchar(src)) {
+      src <- unname(url_map[[f]])
+    }
     if (!nzchar(src)) {
       next
     }
