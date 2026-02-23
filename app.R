@@ -174,7 +174,7 @@ server <- function(input, output, session) {
 
   observeEvent(input$slide_indexh, {
     idx <- input$slide_indexh
-    new_mode <- if (!is.null(idx) && idx >= 3 && idx <= 7) {
+    new_mode <- if (!is.null(idx) && idx >= 3 && idx <= 8) {
       "oac"
     } else {
       "student"

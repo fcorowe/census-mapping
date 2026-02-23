@@ -6,126 +6,320 @@
     <title>Census Mapping Slides</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
     <style>
-      html, body { margin: 0; height: 100%; background: #0f0f0f; color: #efefef; font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Arial, sans-serif; }
-      .wrap { display: grid; grid-template-rows: 1fr auto; height: 100%; }
-      .slide { padding: 20px 18px; overflow: auto; }
-      h1 { margin: 0 0 12px; font-size: 2.5rem; line-height: 1.2; font-weight: 700; }
-      p, li { font-size: 1.7rem; line-height: 1.52; }
-      ul { padding-left: 1.2rem; }
-      .deckbar { border-top: 1px solid #2f2f2f; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; background: #151515; }
-      .controls { display: flex; gap: 8px; }
-      button { border: 1px solid #3b3b3b; background: #232323; color: #f2f2f2; padding: 5px 10px; cursor: pointer; border-radius: 3px; }
-      button:disabled { opacity: 0.45; cursor: not-allowed; }
-      .idx { font-size: 0.95rem; color: #cfcfcf; }
-      .hint { font-size: 0.9rem; color: #aaaaaa; }
-      code { background: #232323; padding: 2px 4px; border-radius: 3px; }
+      html, body {
+        margin: 0;
+        height: 100%;
+        background: #f7f7f7;
+        color: #2e2e2e;
+        font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .wrap {
+        position: relative;
+        height: 100%;
+        border-right: 1px solid #d4d4d4;
+        overflow: hidden;
+      }
+
+      .slide {
+        height: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 48px 36px 72px;
+      }
+
+      .slide.centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .intro-block {
+        max-width: 470px;
+        margin-top: -4vh;
+      }
+
+      .intro-title {
+        margin: 0 0 16px;
+        font-size: 3rem;
+        line-height: 1.15;
+        font-weight: 400;
+        font-style: italic;
+        color: #3b3b3b;
+      }
+
+      .logo-box {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+        padding: 8px 16px;
+        margin: 0 0 16px;
+      }
+
+      .logo-box img {
+        width: 220px;
+        max-width: 100%;
+        display: block;
+      }
+
+      .intro-sub {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.2;
+        font-weight: 400;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 2.1rem;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      p, li {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+        line-height: 1.45;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.3rem;
+      }
+
+      .controls {
+        position: absolute;
+        right: 12px;
+        bottom: 10px;
+        width: 74px;
+        height: 74px;
+        pointer-events: none;
+      }
+
+      .navbtn {
+        width: 28px;
+        height: 28px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        position: absolute;
+        pointer-events: auto;
+        opacity: 0.9;
+      }
+
+      .navbtn:disabled {
+        opacity: 0.25;
+        cursor: not-allowed;
+      }
+
+      .nav-left { left: 0; top: 23px; }
+      .nav-right { right: 0; top: 23px; }
+      .nav-up { left: 23px; top: 0; }
+      .nav-down { left: 23px; bottom: 0; }
+
+      .tri {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .nav-left .tri {
+        border-width: 9px 13px 9px 0;
+        border-color: transparent #d8d8d8 transparent transparent;
+      }
+
+      .nav-right .tri {
+        border-width: 9px 0 9px 13px;
+        border-color: transparent transparent transparent #565656;
+      }
+
+      .nav-up .tri {
+        border-width: 0 9px 13px 9px;
+        border-color: transparent transparent #ececec transparent;
+      }
+
+      .nav-down .tri {
+        border-width: 13px 9px 0 9px;
+        border-color: #ececec transparent transparent transparent;
+      }
+
+      @media (max-width: 960px) {
+        .slide {
+          padding: 26px 20px 52px;
+        }
+
+        .intro-title {
+          font-size: 2.2rem;
+        }
+
+        .intro-sub {
+          font-size: 1.65rem;
+        }
+
+        h1 {
+          font-size: 1.65rem;
+        }
+
+        p, li {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="wrap">
       <section class="slide" id="slide"></section>
-      <footer class="deckbar">
-        <div>
-          <div class="idx" id="idx"></div>
-          <div class="hint">Use arrows, space, or buttons</div>
-        </div>
-        <div class="controls">
-          <button id="prev">Prev</button>
-          <button id="next">Next</button>
-        </div>
-      </footer>
+
+      <div class="controls" aria-hidden="true">
+        <button id="up" class="navbtn nav-up" aria-label="Up" disabled><span class="tri"></span></button>
+        <button id="right" class="navbtn nav-right" aria-label="Next"><span class="tri"></span></button>
+        <button id="left" class="navbtn nav-left" aria-label="Previous"><span class="tri"></span></button>
+        <button id="down" class="navbtn nav-down" aria-label="Down" disabled><span class="tri"></span></button>
+      </div>
     </div>
 
     <script>
       const slides = [
         {
-          title: "Where students live...",
-          body: `
-            <p>Welcome to the mapping practical. Use the controls to move through prompts and explore Liverpool patterns in the map.</p>
+          centered: true,
+          html: `
+            <div class="intro-block">
+              <h1 class="intro-title">Where the students live...</h1>
+              <div class="logo-box"><img src="figs/logo.png" alt="University of Liverpool" /></div>
+              <p class="intro-sub">Applicant Discovery Day<br/>Computer Mapping</p>
+            </div>
           `
         },
         {
           title: "Welcome",
           body: `
-            <p>This activity explores Census 2021 data at Output Area level.</p>
-            <ul>
-              <li>Student share</li>
-              <li>Number of students</li>
-              <li>Population density</li>
-            </ul>
+            <p>Welcome to the computer mapping session!!! In the next few minutes, you will go on a whirlwind tour that will allow you to <b>discover</b> the city of <b>Liverpool</b> using <b>spatial data</b>. In the process, you will get to play with some of the most exciting technology to make maps.</p>
+            <p>Move through the notes by navigating the arrows.</p>
+            <p><b>Let's start!!!</b></p>
           `
         },
         {
           title: "Population density",
           body: `
-            <p>Start by inspecting population density patterns.</p>
+            <p>Spatial data are displayed in layers. Each layer displays a different variable for Liverpool.</p>
             <ul>
-              <li>Which areas are most dense?</li>
-              <li>How does this compare with student-heavy areas?</li>
+              <li>At the minute, population density is the only visible layer on the map.</li>
+              <li><b>Population density</b> takes the number of people who live in each area and divides it by the size of the area (km2 in our case).</li>
+              <li>The map is coloured based on these values, with lighter values representing greater density.</li>
+              <li>Which areas of Liverpool have the highest population density? Why might this be?</li>
             </ul>
           `
         },
         {
           title: "OAC",
           body: `
-            <p>Now switch perspective to the Output Area Classification (OAC).</p>
-            <p>The map switches to OAC categories in this section.</p>
+            <p>Let's peel off the population density layer and move to the next layer.</p>
+            <p>Welcome to the <b>Output Area Classification</b> (OAC), a product of Professor Alex Singleton. OAC is a <i>neighborhood classification</i>.</p>
+            <p>Neighbourhood classifications are data-driven descriptions of places. Using large amounts of quantitative information, we can draw empirical portraits of the character of an area.</p>
           `
         },
         {
-          title: "Explore OAC classes",
+          title: "Explore the classifications",
           body: `
-            <p>Inspect supergroups, groups, and subgroups.</p>
+            <p>Zoom into different areas and click on areas to find out what category they belong to.</p>
+            <p>For a description of each group, move to the next slide.</p>
+          `
+        },
+        {
+          title: "OAC groups (pt. I)",
+          body: `
             <ul>
-              <li>Where are distinct neighborhood types concentrated?</li>
-              <li>What relationships appear with student concentration?</li>
+              <li><b>Hard pressed living</b>: Typically found in urban areas, residents are less diverse (mostly White). Occupations are dominated by manual labour opportunities.</li>
+              <li><b>Constrained city dwellers</b>: Neighbourhoods are characterised by social housing and residents tend to be older on average (with a lower proportion of children in the area). Unemployment rates are higher than other groups, with educational levels lower.</li>
+              <li><b>Urbanites</b>: Residents tend to be employed in financial, public administration and education-related roles. Main urban areas, with a mix of terraces and flats.</li>
+              <li><b>Suburbanites</b>: Areas located on the outskirts of urban areas. Characterised by semi-detached houses. Residents are a mixture of young families and retired individuals, and are above average in terms of incomes.</li>
             </ul>
           `
         },
         {
-          title: "OAC and students",
+          title: "OAC groups (pt. II)",
           body: `
-            <p>Compare OAC categories with student geographies.</p>
-            <p>Are student clusters associated with specific area types?</p>
+            <ul>
+              <li><b>Cosmopolitans</b>: Densely populated, these areas are dominated by privately rented flats and younger populations (particularly students and young professionals).</li>
+              <li><b>Multicultural metropolitans</b>: Terraced housing dominates these areas. There is a high ethnic mix, and most other characteristics are at national average.</li>
+              <li><b>Ethnicity central</b>: Higher concentrations of non-White populations. Typically younger, renting accommodation and higher unemployment.</li>
+              <li><b>Rural residents</b>: Rural areas with an older and affluent population (there are none of these in Liverpool, a truly urban city).</li>
+            </ul>
           `
         },
         {
-          title: "OAC reflection",
+          title: "Beyond Liverpool",
           body: `
-            <p>Summarize the dominant OAC patterns in Liverpool and how they relate to density and student distribution.</p>
+            <p>OAC goes beyond Liverpool to include the entire country.</p>
+            <p>Open <a href="http://oac.datashine.org.uk/#datalayer=oac11_s&layers=BTTT&zoom=12&lon=-0.1500&lat=51.5200" target="_blank" rel="noopener noreferrer">this link</a> in a new tab and enter your postcode. Does the neighborhood description match your perception of the place?</p>
           `
         },
         {
           title: "Student population",
           body: `
-            <p>Return to student-focused layers and test filters.</p>
+            <p>Now we shift from OAC to student patterns.</p>
+          `
+        },
+        {
+          title: "Landmarks and place",
+          body: `
+            <p>Use the map to find:</p>
             <ul>
-              <li>Which OAs have highest student share?</li>
-              <li>Which OAs have highest student counts?</li>
+              <li><b>Anfield</b> (look north towards Stanley Park).</li>
+              <li><b>Albert Dock</b> (follow the River Mersey into the city centre).</li>
+              <li><b>Liverpool John Lennon Airport</b> (try South Liverpool).</li>
             </ul>
           `
         },
         {
-          title: "Discussion",
+          title: "Explore with controls",
           body: `
-            <p>Use the map controls to compare metrics and formulate your interpretation.</p>
+            <p>Use the controls on the right to filter map values. Try the student-focused metrics and compare how the map changes as you adjust thresholds.</p>
           `
         },
         {
-          title: "Finish",
+          title: "Questions",
           body: `
-            <p>Well done. You have completed the practical.</p>
+            <p>Try to find answers to the following:</p>
+            <ul>
+              <li>Which area contains the highest number of students in Liverpool?</li>
+              <li>Where are the two main areas where students live in Liverpool? Why might students be attracted to these areas?</li>
+              <li>How does the spatial distribution of students relate to patterns in population density?</li>
+              <li>Why might some places be visible on the map but have no student counts?</li>
+            </ul>
+          `
+        },
+        {
+          title: "OAC + students",
+          body: `
+            <p>Combine OAC and student metrics to answer:</p>
+            <ul>
+              <li>Which neighborhood types do students live in?</li>
+              <li>How are these areas different from the rest of Liverpool?</li>
+            </ul>
+          `
+        },
+        {
+          title: "Wrap-up",
+          body: `
+            <p><b>Well done</b> on completing the short practical. This gives you a flavour of mapping and spatial analysis in Liverpool.</p>
+            <p>Please use any remaining time to ask questions about the degree or the city itself.</p>
           `
         }
       ];
 
       let i = 0;
       const slideEl = document.getElementById('slide');
-      const idxEl = document.getElementById('idx');
-      const prev = document.getElementById('prev');
-      const next = document.getElementById('next');
+      const left = document.getElementById('left');
+      const right = document.getElementById('right');
 
       function notifyParent() {
         const payload = { type: 'reveal-slide', indexh: i };
@@ -144,10 +338,15 @@
 
       function render() {
         const s = slides[i];
-        slideEl.innerHTML = `<h1>${s.title}</h1>${s.body}`;
-        idxEl.textContent = `Slide ${i + 1} / ${slides.length}`;
-        prev.disabled = i === 0;
-        next.disabled = i === slides.length - 1;
+        if (s.centered) {
+          slideEl.className = 'slide centered';
+          slideEl.innerHTML = s.html;
+        } else {
+          slideEl.className = 'slide';
+          slideEl.innerHTML = `<h1>${s.title}</h1>${s.body}`;
+        }
+        left.disabled = i === 0;
+        right.disabled = i === slides.length - 1;
         notifyParent();
       }
 
@@ -158,8 +357,8 @@
         render();
       }
 
-      prev.addEventListener('click', () => step(-1));
-      next.addEventListener('click', () => step(1));
+      left.addEventListener('click', () => step(-1));
+      right.addEventListener('click', () => step(1));
       window.addEventListener('keydown', (e) => {
         if (["ArrowRight", "ArrowDown", " ", "PageDown"].includes(e.key)) {
           e.preventDefault();
