@@ -2,6 +2,8 @@
 
 This project contains an R Shiny application and a GitHub Pages wrapper site.
 
+It replicates the material developed by Dani Arribas-Bel (@darribas) and Mark Green (@markalangreen).
+
 ## Important: GitHub Pages and Shiny
 
 GitHub Pages is static hosting and cannot run an R Shiny server directly.
